@@ -7,44 +7,45 @@ module.exports = app => {
       app.logger.error(error);
     }
     * crawler() {
-        yield this.getPromiseCrawler({},'https://m.xiachufang.com/')
-            .then(this.homePageCrawler)
-            .then(this.categoryPageCrawler).catch(this.errorProsses);
+      yield this.getPromiseCrawler({}, 'https://m.xiachufang.com/')
+        .then(this.homePageCrawler)
+        .then(this.categoryPageCrawler)
+        .catch(this.errorProsses);
     }
-    homePageCrawler(mixinObj){
-      let {res, done,target} =mixinObj;
-      let urlArray = [];
-      let $ = res.$;
-      let categorys = $('.pop-category');
-      categorys.each(function (i, elm) {
-        let rUrl=elm.attribs['href'];
+    homePageCrawler(mixinObj) {
+      const { res, done, target } = mixinObj;
+      const urlArray = [];
+      const $ = res.$;
+      const categorys = $('.pop-category');
+      categorys.each(function(i, elm) {
+        const rUrl = elm.attribs.href;
         urlArray.push(rUrl);
-      })
-       done();
-      return target.getPromiseCrawler1({},urlArray);
+      });
+      done();
+      return target.getPromiseCrawler1({}, urlArray);
     }
-    categoryPageCrawler(mixinObj){
-      let {res, done,target} =mixinObj
+    categoryPageCrawler(mixinObj) {
+      const { res, done, target } = mixinObj;
       return '1';
     }
-    getPromiseCrawler(option,urls){
-        let self=this;
-      var promise=new Promise(function (resolve, reject) {
-          var callback=function(error, res, done){
-              if(error){
-                  reject(error);
-              }else{
-                  resolve({
-                      res:res,
-                      done:done,
-                      target:self
-                  });
-              }
+    getPromiseCrawler(option, urls) {
+      const self = this;
+      const promise = new Promise(function(resolve, reject) {
+        const callback = function(error, res, done) {
+          if (error) {
+            reject(error);
+          } else {
+            resolve({
+              res,
+              done,
+              target: self,
+            });
           }
-          option.callback=callback;
-          let c= new Crawler(option);
-          c.queue(urls);
-      })
+        };
+        option.callback = callback;
+        const c = new Crawler(option);
+        c.queue(urls);
+      });
       return promise;
     }
   }
