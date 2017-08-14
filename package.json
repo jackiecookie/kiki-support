@@ -4,7 +4,9 @@
   "description": "",
   "private": true,
   "dependencies": {
+    "crawler": "^1.0.5",
     "egg": "^1.7.0",
+    "egg-mongoose": "^2.1.0",
     "egg-scripts": "^1.0.0"
   },
   "devDependencies": {
@@ -24,10 +26,14 @@
     "start": "egg-scripts start --daemon",
     "stop": "egg-scripts stop",
     "dev": "egg-bin dev",
+    "debug": "egg-bin dev $NODE_DEBUG_OPTION",
     "test": "npm run lint -- --fix && npm run test-local",
+    "debug-test": "npm run lint -- --fix && npm run debug-test-local",
     "test-local": "egg-bin test",
+    "debug-test-local": "egg-bin test $NODE_DEBUG_OPTION",
     "cov": "egg-bin cov",
     "lint": "eslint .",
+    "fix-lint": "eslint .--fix",
     "ci": "npm run lint && npm run cov",
     "autod": "autod"
   },
