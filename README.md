@@ -2,32 +2,9 @@
 
 
 
-## QuickStart
-
-<!-- add docs here for user -->
-
-see [egg docs][egg] for more detail.
-
-### Development
-
-```bash
-$ npm i
-$ npm run dev
-$ open http://localhost:7001/news
-```
-
-### Deploy
-
-```bash
-$ npm start
-$ npm stop
-```
-
-### npm scripts
-
-- Use `npm run lint` to check code style.
-- Use `npm test` to run unit test.
-- Use `npm run autod` to auto detect dependencies upgrade, see [autod](https://www.npmjs.com/package/autod) for more detail.
-
-
-[egg]: https://eggjs.org
+todoList
+- [ ] 重构定时抓取菜谱服务,存在问题
+      
+      1. 爬虫何时判定为已结束?
+      2. 错误管理,请求超时,请求报错
+      3. 优化:重构方法
