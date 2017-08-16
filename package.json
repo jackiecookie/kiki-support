@@ -4,6 +4,7 @@
   "description": "",
   "private": true,
   "dependencies": {
+    "bluebird": "^3.5.0",
     "crawler": "^1.0.5",
     "egg": "^1.7.0",
     "egg-mongoose": "^2.1.0",
@@ -33,7 +34,7 @@
     "debug-test-local": "egg-bin test $NODE_DEBUG_OPTION",
     "cov": "egg-bin cov",
     "lint": "eslint .",
-    "fix-lint": "eslint .--fix",
+    "fix-lint": "npm run lint -- --fix",
     "ci": "npm run lint && npm run cov",
     "autod": "autod"
   },
