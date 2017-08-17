@@ -97,7 +97,8 @@ module.exports = app => {
             const ingredientSub = ingredient.first().find('a');
             ingredient = hasElm(ingredientSub) ? ingredientSub : ingredient;
           }
-          const ingredientText = hasElm(ingredient) ? ingredient.first().text().trim().replace('\n', '') : '';
+          const ingredientText = hasElm(ingredient) ? ingredient.first().text().trim()
+            .replace('\n', '') : '';
           const weightElm = $self.find('.weight');
           const weight = hasElm(weightElm) ? weightElm.first().text().trim() : '';
           seasoning.push({
